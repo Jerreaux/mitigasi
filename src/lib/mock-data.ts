@@ -1,0 +1,242 @@
+import type {
+  AlertItem,
+  CitizenReport,
+  FloodZone,
+  InfrastructureAsset,
+  StatMetric,
+} from "@/types";
+
+export const dashboardStats: StatMetric[] = [
+  {
+    label: "Active Flood Zones",
+    value: 12,
+    change: -8.3,
+    trend: "down",
+  },
+  {
+    label: "Citizen Reports (24h)",
+    value: 47,
+    change: 12.5,
+    trend: "up",
+  },
+  {
+    label: "Infrastructure Alerts",
+    value: 8,
+    change: -15.2,
+    trend: "down",
+  },
+  {
+    label: "Population at Risk",
+    value: "24,850",
+    change: 3.1,
+    trend: "up",
+  },
+];
+
+export const floodTrendData = [
+  { month: "Jan", level: 2.1, rainfall: 180 },
+  { month: "Feb", level: 2.4, rainfall: 220 },
+  { month: "Mar", level: 3.2, rainfall: 310 },
+  { month: "Apr", level: 4.1, rainfall: 420 },
+  { month: "May", level: 3.8, rainfall: 380 },
+  { month: "Jun", level: 5.2, rainfall: 510 },
+];
+
+export const riskDistribution = [
+  { name: "Low", value: 45, color: "#16A34A" },
+  { name: "Moderate", value: 28, color: "#F59E0B" },
+  { name: "High", value: 18, color: "#EA580C" },
+  { name: "Critical", value: 9, color: "#DC2626" },
+];
+
+export const floodZones: FloodZone[] = [
+  {
+    id: "fz-001",
+    name: "Kali Ciliwung Sector A",
+    district: "Jakarta Selatan",
+    riskLevel: "critical",
+    waterLevel: 4.8,
+    population: 12500,
+    lat: -6.2615,
+    lng: 106.8106,
+  },
+  {
+    id: "fz-002",
+    name: "Banjir Kanal Timur",
+    district: "Jakarta Timur",
+    riskLevel: "high",
+    waterLevel: 3.6,
+    population: 8200,
+    lat: -6.225,
+    lng: 106.9,
+  },
+  {
+    id: "fz-003",
+    name: "Ciliwung Riverside",
+    district: "Bogor",
+    riskLevel: "moderate",
+    waterLevel: 2.4,
+    population: 3400,
+    lat: -6.595,
+    lng: 106.793,
+  },
+  {
+    id: "fz-004",
+    name: "Sunter Flood Basin",
+    district: "Jakarta Utara",
+    riskLevel: "high",
+    waterLevel: 3.9,
+    population: 6800,
+    lat: -6.138,
+    lng: 106.865,
+  },
+  {
+    id: "fz-005",
+    name: "Depok Wetland Zone",
+    district: "Depok",
+    riskLevel: "low",
+    waterLevel: 1.2,
+    population: 950,
+    lat: -6.402,
+    lng: 106.794,
+  },
+];
+
+export const citizenReports: CitizenReport[] = [
+  {
+    id: "CR-2847",
+    title: "Road flooding on Jl. Gatot Subroto",
+    category: "Flooding",
+    status: "verified",
+    location: "Jakarta Selatan",
+    reportedAt: "2026-06-15T08:32:00",
+    priority: "high",
+  },
+  {
+    id: "CR-2846",
+    title: "Damaged drainage cover",
+    category: "Infrastructure",
+    status: "in-progress",
+    location: "Jakarta Pusat",
+    reportedAt: "2026-06-15T07:15:00",
+    priority: "moderate",
+  },
+  {
+    id: "CR-2845",
+    title: "Water level rising near housing",
+    category: "Early Warning",
+    status: "pending",
+    location: "Bekasi",
+    reportedAt: "2026-06-15T06:48:00",
+    priority: "critical",
+  },
+  {
+    id: "CR-2844",
+    title: "Blocked canal debris",
+    category: "Drainage",
+    status: "resolved",
+    location: "Tangerang",
+    reportedAt: "2026-06-14T22:10:00",
+    priority: "moderate",
+  },
+  {
+    id: "CR-2843",
+    title: "Evacuation route obstruction",
+    category: "Emergency",
+    status: "verified",
+    location: "Jakarta Timur",
+    reportedAt: "2026-06-14T19:30:00",
+    priority: "high",
+  },
+];
+
+export const infrastructureAssets: InfrastructureAsset[] = [
+  {
+    id: "INF-001",
+    name: "Polder System C-12",
+    type: "Flood Control",
+    condition: "fair",
+    lastInspection: "2026-06-10",
+    riskScore: 62,
+    location: "Jakarta Utara",
+  },
+  {
+    id: "INF-002",
+    name: "Pump Station Sunter",
+    type: "Pumping Station",
+    condition: "good",
+    lastInspection: "2026-06-12",
+    riskScore: 28,
+    location: "Jakarta Utara",
+  },
+  {
+    id: "INF-003",
+    name: "Retention Basin R-7",
+    type: "Retention Basin",
+    condition: "poor",
+    lastInspection: "2026-06-08",
+    riskScore: 78,
+    location: "Jakarta Timur",
+  },
+  {
+    id: "INF-004",
+    name: "Embankment Sector B",
+    type: "Embankment",
+    condition: "critical",
+    lastInspection: "2026-06-05",
+    riskScore: 91,
+    location: "Bekasi",
+  },
+  {
+    id: "INF-005",
+    name: "Drainage Network D-34",
+    type: "Drainage",
+    condition: "good",
+    lastInspection: "2026-06-13",
+    riskScore: 35,
+    location: "Depok",
+  },
+];
+
+export const activeAlerts: AlertItem[] = [
+  {
+    id: "ALT-001",
+    title: "Critical water level exceeded — Kali Ciliwung Sector A",
+    severity: "critical",
+    timestamp: "2026-06-16T09:00:00",
+    zone: "Jakarta Selatan",
+    actionKey: "evacuate",
+  },
+  {
+    id: "ALT-002",
+    title: "Heavy rainfall forecast — 120mm in 6 hours",
+    severity: "high",
+    timestamp: "2026-06-16T08:45:00",
+    zone: "Greater Jakarta",
+    actionKey: "deploy",
+  },
+  {
+    id: "ALT-003",
+    title: "Pump station capacity at 92%",
+    severity: "moderate",
+    timestamp: "2026-06-16T08:20:00",
+    zone: "Jakarta Utara",
+    actionKey: "monitor",
+  },
+  {
+    id: "ALT-004",
+    title: "Embankment Sector B structural degradation detected",
+    severity: "high",
+    timestamp: "2026-06-16T07:50:00",
+    zone: "Bekasi",
+    actionKey: "inspect",
+  },
+  {
+    id: "ALT-005",
+    title: "River level rising — Ciliwung Riverside",
+    severity: "moderate",
+    timestamp: "2026-06-16T06:30:00",
+    zone: "Bogor",
+    actionKey: "monitor",
+  },
+];
