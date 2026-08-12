@@ -7,7 +7,7 @@ const FloodZone = require('./models/Floodzone');
 const CitizenReport = require('./models/CitizenReport');
 const InfrastructureAsset = require('./models/InfrastructureAsset');
 const Alert = require('./models/Alert');
-const User = require('./models/user');
+const User = require('./models/User');
 
 dotenv.config();
 
