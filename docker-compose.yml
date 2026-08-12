@@ -8,8 +8,6 @@ services:
       - mongo_data:/data/db
     environment:
       MONGO_INITDB_DATABASE: mitigasi
-    networks:
-      - default
 
   backend:
     build:
@@ -24,8 +22,6 @@ services:
       PORT: 5001
       MONGODB_URI: mongodb://mongodb:27017/mitigasi
       JWT_SECRET: ${JWT_SECRET:-change_me_in_production}
-    networks:
-      - default
 
   frontend:
     build:
