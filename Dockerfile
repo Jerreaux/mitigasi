@@ -23,13 +23,13 @@ ENV NODE_ENV=production
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-# Copy Next.js standalone app first
+# Copy Next.js standalone app
 COPY --from=builder /app/.next/standalone /app/
 COPY --from=builder /app/.next/static /app/.next/static
 COPY --from=builder /app/public /app/public
 
-# Copy backend node_modules specifically
-COPY --from=builder /app/backend/node_modules /app/backend/node_modules
+# Copy backend source code & node_modules
+COPY --from=builder /app/backend /app/backend
 
 # Copy startup script
 COPY start.sh /app/start.sh
