@@ -6,14 +6,13 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
 
-# Copy frontend code & build Next.js standalone
+# Copy project code & build Next.js standalone
 COPY . .
 ENV NEXT_PUBLIC_API_URL="/api"
 RUN npm run build
 
-# Install backend dependencies
+# Install production dependencies for backend
 WORKDIR /app/backend
-COPY backend/package.json backend/package-lock.json ./
 RUN npm ci --omit=dev
 
 # --- Stage 2: Production Runner ---
@@ -24,13 +23,13 @@ ENV NODE_ENV=production
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-# Copy backend app
-COPY --from=builder /app/backend /app/backend
-
-# Copy Next.js standalone app
-COPY --from=builder /app/public /app/public
+# Copy Next.js standalone app first
 COPY --from=builder /app/.next/standalone /app/
 COPY --from=builder /app/.next/static /app/.next/static
+COPY --from=builder /app/public /app/public
+
+# Copy backend node_modules specifically
+COPY --from=builder /app/backend/node_modules /app/backend/node_modules
 
 # Copy startup script
 COPY start.sh /app/start.sh
